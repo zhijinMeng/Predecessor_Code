@@ -27,3 +27,21 @@ create an uninitialized tensor with the size of m,n
 注意：torch.full([10], 0.)里的点必须要有，否则因为版本问题而报错。
 ### 1.11 - a[:, :, :, :]:
 Tensor Indexing, the same as python indexing.
+### 1.12 - torch.index_select(input, dim, index, *, output=None)
+Select the tensor by specific dimension/index.\
+Attention:\
+**input** - the tensor input\
+**dim** - the dimension in which we index\
+**index** - the 1-D tensor containing the indices to index\
+**Example**\
+a = torch.tensor(4,3,28,28)\
+indices = torch.tensor([0,2])\
+torch.index_select(a, 0, indices)\
+or a.index_select(0, indices)\
+By code above, we are able to select the first dimension with index 0,1
+### 1.13 - torch.masked_select(input, index):
+similar to torch.index_select
+### 1.14 - torch.take(input, index):
+flatten the torch and then take the selected index tensor
+### 1.15 - torch.view & toych.reshape
+全连接层非常适合， 纬度变换，缺点：容易造成数据污染

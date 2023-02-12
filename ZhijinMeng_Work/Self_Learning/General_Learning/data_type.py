@@ -36,5 +36,27 @@ a = torch.normal(mean=torch.full([10], 0.), std=torch.arange(0.1, 0, -0.1))
 
 # Indexing & Slicing
 a = torch.rand(4, 3, 28, 28)
-print(a[:1, :, :, :])
-print(a[:1, 1:, 1, :])
+# print(a[:1, :, :, :])
+# print(a[:1, 1:, 1, :])
+
+# Selection by a specific index
+a = torch.rand(4, 3, 28, 28)
+# print(a.type())
+# print(torch.index_select(a, 0, torch.tensor([0, 2])))
+indices = torch.tensor([0, 2])
+# print(a.index_select(0, indices).shape)
+
+# 1.13 masked_select
+a = torch.rand(2, 3)
+mask = a.ge(0.5)
+# print(a)
+# print(torch.masked_select(a, mask))
+
+# 1.14 torch.take
+a = torch.rand(2, 3)
+indices = torch.tensor([0,2])
+# print(torch.take(a, indices))
+
+# 1.15 torch.view/reshape
+a = torch.rand(3,2,5,5)
+print(a)
